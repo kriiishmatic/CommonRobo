@@ -71,6 +71,15 @@ Nodejs_setup(){
 
 }
 
+Maven_setup(){
+ dnf install maven -y &>>$Logfile
+ mvn clean package  &>>$Logfile
+Status $? "installed the DEPENDENCIES for Maven/java "
+mv target/shipping-1.0.jar shipping.jar &>>$Logfile
+Status $? "Moving jars geek!"
+}
+
+
 App_setup(){
     id roboshop &>>$Logfile
     if [ $? -ne 0 ]; then
