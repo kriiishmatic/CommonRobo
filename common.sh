@@ -6,7 +6,6 @@ Y="\e[33m"
 N="\e[0m"
 
 ##### Variables #####
-App_name=catalogue
 mongodIP=mongod.kriiishmatic.fun
 DIR=$PWD
 check_root(){
@@ -19,16 +18,11 @@ fi
 }
 #creating logs files
 ####################
-
 shell_log="/var/log/robo-project"
-
 mkdir -p $shell_log
-
 #removing .sh from file
 #######################
-
 Remove_sh=$( echo $0 | cut -d "." -f1 )
-
 Logfile="$shell_log/$Remove_sh.log"
 ##Time taken ####
 echo " Script started at :: $(date) " | tee -a $Logfile
