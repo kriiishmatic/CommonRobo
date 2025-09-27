@@ -4,3 +4,4 @@ source ./common.sh
 
 mongo_installation 
 
+TIMER
