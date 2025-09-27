@@ -1,5 +1,5 @@
 #!/bin/bash
-
+source ./common.sh
 App_name=maven
 App_setup
 Maven_setup
