@@ -1,4 +1,6 @@
 #!/bin/bash
+
+source ./common.sh
 App_name=catalogue
 mongodIP=mongod.kriiishmatic.fun
 DIR=$PWD
