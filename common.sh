@@ -107,8 +107,8 @@ systemd_setup(){
 }
 
 app_restart(){
-    systemctl restart $app_name
-    Status $? "Restarted $app_name"
+    systemctl restart $App_name
+    Status $? "Restarted $App_name"
 }
 
 TIMER(){
