@@ -1,6 +1,6 @@
 #!/bin/bash
 source ./common.sh
-App_name=maven
+App_name=shipping
 App_setup
 Maven_setup
 systemd_setup
