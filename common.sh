@@ -5,6 +5,11 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
+##### Variables #####
+App_name=catalogue
+mongodIP=mongod.kriiishmatic.fun
+DIR=$PWD
+
 USERID=$(id -u)
 
 if [ $USERID -ne 0 ]; then
@@ -59,6 +64,52 @@ Status $? " Mongod restarted and ready to go "
 
 }
 
+Nodejs_setup(){
+    dnf module disable nodejs -y &>>$Logfile
+    Status $? "Disabled the node"
+    dnf module enable nodejs:20 -y &>>$Logfile
+    Status $? "enabled the node"
+    dnf install nodejs -y &>>$Logfile
+    Status $? "installed the node"
+    npm install &>>$Logfile
+    Status $? "installed the DEPENDENCIES"
+
+
+}
+
+App_setup(){
+    id roboshop &>>$Logfile
+    if [ $? -ne 0 ]; then
+useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop
+    else
+    echo -e " Already installed $Y SKIPPED! $N "
+    fi
+    mkdir -p /app 
+    Status $? "Creating directory"
+    curl -o /tmp/$App_name.zip https://roboshop-artifacts.s3.amazonaws.com/$App_name-v3.zip 
+    Status $? "Dowloadting code zip"
+    cd /app 
+    rm -rf /app/*
+    Status $? "Removed previous code"
+    unzip /tmp/$App_name.zip &>>$Logfile
+    Status $? "unzipping latest code"
+}
+
+systemd_setup(){
+   cp $DIR/$App_name.service /etc/systemd/system/$App_name.service
+    Status $? "Copied $App_name service"
+    systemctl daemon-reload
+    Status $? "Demonic reload"
+    systemctl enable $App_name &>>$Logfile
+    Status $? "Enabled the node"
+    systemctl start $App_name &>>$Logfile
+    Status $? "Start it " 
+}
+
+app_restart(){
+    systemctl restart $app_name
+    VALIDATE $? "Restarted $app_name"
+}
 
 TIMER(){
 
