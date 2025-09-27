@@ -4,6 +4,8 @@ source ./common.sh
 App_name=catalogue
 mongodIP=mongod.kriiishmatic.fun
 DIR=$PWD
+
+check_root
 App_setup
 Nodejs_setup
 systemd_setup
