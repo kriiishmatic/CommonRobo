@@ -16,5 +16,3 @@ rabbitmqctl add_user roboshop roboshop123 &>>$Logfile
 Status $? "Added System user"
 rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*" &>>$Logfile
 Status $? "Given Root permissions "
-
-TIMER
