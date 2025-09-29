@@ -1,5 +1,6 @@
 #!/bin/bash
-
+mongodIP=mongod.kriiishmatic.fun
+DIR=$PWD
 source ./common.sh
 check_root
 cp $DIR/rabbitmq.repo /etc/yum.repos.d/rabbitmq.repo &>>$Logfile
