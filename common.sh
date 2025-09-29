@@ -79,6 +79,12 @@ mv target/shipping-1.0.jar shipping.jar &>>$Logfile
 Status $? "Moving jars geek!"
 }
 
+Python_setup(){
+    dnf install python3 gcc python3-devel -y &>>$Logfile
+    pip3 install -r requirements.txt &>>$Logfile
+    
+
+}
 
 App_setup(){
     id roboshop &>>$Logfile
