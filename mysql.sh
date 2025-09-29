@@ -1,5 +1,5 @@
 #!/bin/bash
-sorce ./common.sh
+source ./common.sh
 check_root
 dnf install mysql-server -y &>>$Logfile
 Status $? "Installing MYSQL"
