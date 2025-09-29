@@ -1,6 +1,7 @@
 #!/bin/bash
 source ./common.sh
 App_name=shipping
+MysqlDomain=mysql.kriiishmatic.fun
 App_setup
 Maven_setup
 systemd_setup
